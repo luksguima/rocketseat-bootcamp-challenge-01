@@ -34,18 +34,20 @@ server.get('/projects', (req, res) => {
   return res.json(projects);
 });
 
+var nextId = 1
+
 //Cadastra um novo projeto.
  server.post('/projects', (req, res) => {
-   const { id, title } = req.body;
+   const { title } = req.body;
 
    const project = {
-     id,
+     id: nextId++,
      title,
      tasks: []
    };
 
    projects.push(project);
-
+ 
    return res.json(project);
  }); 
 
